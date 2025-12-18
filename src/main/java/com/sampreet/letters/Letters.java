@@ -1,5 +1,7 @@
 package com.sampreet.letters;
 
+import com.sampreet.letters.listeners.PlayerJoinListener;
+import com.sampreet.letters.listeners.PlayerQuitListener;
 import com.sampreet.letters.commands.RootCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.ChatColor;
@@ -23,6 +25,10 @@ public final class Letters extends JavaPlugin {
         Objects.requireNonNull(this.getCommand("letters")).setExecutor(rootCommand);
         // Register the root command tab completer
         Objects.requireNonNull(this.getCommand("letters")).setTabCompleter(rootCommand);
+
+        // Register the event listeners
+        getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);
+        getServer().getPluginManager().registerEvents(new PlayerQuitListener(this), this);
 
         // Log that the plugin has successfully loaded and is ready
         enableDisableMessage("messages.system.lifecycle.enable");

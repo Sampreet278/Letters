@@ -6,6 +6,20 @@ enabled: true
 # such as join, leave, death, advancement, and system messages.
 messages:
 
+  # These messages are sent during normal gameplay events
+  # such as player join and leave.
+  default:
+
+    # Random message from this list will be sent when a player joins the server.
+    join:
+      - "&a%player% joined the server"
+      - "&a%player% connected"
+
+    # Random message from this list will be sent when a player leaves the server.
+    leave:
+      - "&c%player% left the server"
+      - "&c%player% disconnected"
+
   # System messages used internally by the plugin.
   # These messages are shown in the console or as command feedback,
   # and are not related to gameplay events.
