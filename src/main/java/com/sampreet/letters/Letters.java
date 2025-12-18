@@ -18,7 +18,10 @@ public final class Letters extends JavaPlugin {
         }
 
         // Register the root command executor
-        Objects.requireNonNull(this.getCommand("letters")).setExecutor(new RootCommand(this));
+        RootCommand rootCommand = new RootCommand(this);
+        Objects.requireNonNull(this.getCommand("letters")).setExecutor(rootCommand);
+        // Register the root command tab completer
+        Objects.requireNonNull(this.getCommand("letters")).setTabCompleter(rootCommand);
 
         // Log that the plugin has successfully loaded and is ready
         enableDisableMessage("messages.system.lifecycle.enable");
