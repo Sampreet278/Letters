@@ -22,14 +22,14 @@ messages:
       disable: "Letters version %version% has been disabled."
 
       # Message sent to the console when the plugin is reloaded.
-      reload: "Letters version %version% has been reloaded."
+      reload: "&aLetters version %version% has been reloaded."
 
     # Command-related system messages.
     # These messages are sent to players when they interact with the plugin's commands.
     commands:
 
       # Message sent when an invalid or unknown subcommand is used.
-      invalid-command: "The command you ran was not found."
+      invalid-command: "&eThe command you ran was not found."
 
       # Message sent when a player does not have permission to execute a command.
-      no-permission: "You do not have the permission to do that!"
+      no-permission: "&cYou do not have the permission to do that!"

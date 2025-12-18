@@ -2,6 +2,7 @@ package com.sampreet.letters;
 
 import com.sampreet.letters.commands.RootCommand;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.ChatColor;
 import java.util.Objects;
 
 public final class Letters extends JavaPlugin {
@@ -45,6 +46,6 @@ public final class Letters extends JavaPlugin {
         // Insert current plugin version into placeholder
         message = message.replace("%version%", getDescription().getVersion());
         // Log the message to the console
-        getLogger().info(message);
+        getLogger().info(ChatColor.translateAlternateColorCodes('&', message));
     }
 }

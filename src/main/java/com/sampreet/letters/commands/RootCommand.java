@@ -6,6 +6,7 @@ import org.jspecify.annotations.NonNull;
 import org.bukkit.command.TabCompleter;
 import com.sampreet.letters.Letters;
 import org.bukkit.command.Command;
+import org.bukkit.ChatColor;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,6 +72,6 @@ public class RootCommand implements CommandExecutor, TabCompleter {
         // Insert current plugin version into placeholder
         message = message.replace("%version%", plugin.getDescription().getVersion());
         // Send the message to the player or console
-        sender.sendMessage(message);
+        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
     }
 }
