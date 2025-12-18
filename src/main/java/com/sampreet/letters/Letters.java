@@ -1,5 +1,6 @@
 package com.sampreet.letters;
 
+import com.sampreet.letters.listeners.PlayerDeathListener;
 import com.sampreet.letters.listeners.PlayerJoinListener;
 import com.sampreet.letters.listeners.PlayerQuitListener;
 import com.sampreet.letters.commands.RootCommand;
@@ -29,6 +30,7 @@ public final class Letters extends JavaPlugin {
         // Register the event listeners
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerQuitListener(this), this);
+        getServer().getPluginManager().registerEvents(new PlayerDeathListener(this), this);
 
         // Log that the plugin has successfully loaded and is ready
         enableDisableMessage("messages.system.lifecycle.enable");

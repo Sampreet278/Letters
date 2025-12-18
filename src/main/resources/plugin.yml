@@ -1,5 +1,5 @@
 name: Letters
-version: '0.1.0'
+version: '0.2.0'
 main: com.sampreet.letters.Letters
 api-version: '1.21'
 prefix: Letters
@@ -26,4 +26,9 @@ permissions:
   # Default permission for having custom leave messages
   letters.leave:
     description: Allows the plugin to change leave messages for the player
+    default: true
+
+  # Default permission for having custom death messages
+  letters.death:
+    description: Allows the plugin to change death messages for the player
     default: true
