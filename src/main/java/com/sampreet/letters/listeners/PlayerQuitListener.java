@@ -18,6 +18,9 @@ public class PlayerQuitListener implements Listener {
 
     @EventHandler
     public void onPlayerQuit(@NonNull PlayerQuitEvent event) {
+        // Check if the player has the permission to have custom leave messages
+        if (!event.getPlayer().hasPermission("letters.leave")) return;
+
         // Store all custom leave messages in a list
         List<String> messages = plugin.getConfig().getStringList("messages.default.leave");
 

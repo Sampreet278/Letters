@@ -11,8 +11,19 @@ commands:
   letters:
     description: The main command for managing the plugin
     usage: /<command> <subcommand>
+
 permissions:
   # Permission to reload the plugin configuration
   letters.reload:
     description: Allows reloading of the plugin configuration
     default: op
+
+  # Default permission for having custom join messages
+  letters.join:
+    description: Allows the plugin to change join messages for the player
+    default: true
+
+  # Default permission for having custom leave messages
+  letters.leave:
+    description: Allows the plugin to change leave messages for the player
+    default: true
