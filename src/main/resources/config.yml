@@ -1,0 +1,17 @@
+# Enables or disables the plugin entirely.
+# If set to false, the plugin will not register any listeners or send messages.
+enabled: true
+
+# This contains all configurable messages handled by the plugin,
+# such as join, leave, death, advancement, and system messages.
+messages:
+
+  # System messages used internally by the plugin.
+  # These messages are shown in the console when the plugin is enabled or disabled.
+  system:
+
+    # Message sent to the console when the plugin is enabled.
+    enable: "Letters version %version% has been enabled."
+
+    # Message sent to the console when the plugin is disabled.
+    disable: "Letters version %version% has been disabled."
