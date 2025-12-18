@@ -7,11 +7,29 @@ enabled: true
 messages:
 
   # System messages used internally by the plugin.
-  # These messages are shown in the console when the plugin is enabled or disabled.
+  # These messages are shown in the console or as command feedback,
+  # and are not related to gameplay events.
   system:
 
-    # Message sent to the console when the plugin is enabled.
-    enable: "Letters version %version% has been enabled."
+    # Plugin lifecycle messages.
+    # These messages are sent when the plugin is enabled, disabled, or reloaded.
+    lifecycle:
 
-    # Message sent to the console when the plugin is disabled.
-    disable: "Letters version %version% has been disabled."
+      # Message sent to the console when the plugin is enabled.
+      enable: "Letters version %version% has been enabled."
+
+      # Message sent to the console when the plugin is disabled.
+      disable: "Letters version %version% has been disabled."
+
+      # Message sent to the console when the plugin is reloaded.
+      reload: "Letters version %version% has been reloaded."
+
+    # Command-related system messages.
+    # These messages are sent to players when they interact with the plugin's commands.
+    commands:
+
+      # Message sent when an invalid or unknown subcommand is used.
+      invalid-command: "The command you ran was not found."
+
+      # Message sent when a player does not have permission to execute a command.
+      no-permission: "You do not have the permission to do that!"

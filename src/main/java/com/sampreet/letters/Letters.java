@@ -1,6 +1,8 @@
 package com.sampreet.letters;
 
+import com.sampreet.letters.commands.RootCommand;
 import org.bukkit.plugin.java.JavaPlugin;
+import java.util.Objects;
 
 public final class Letters extends JavaPlugin {
 
@@ -15,14 +17,17 @@ public final class Letters extends JavaPlugin {
             return;
         }
 
+        // Register the root command executor
+        Objects.requireNonNull(this.getCommand("letters")).setExecutor(new RootCommand(this));
+
         // Log that the plugin has successfully loaded and is ready
-        enableDisableMessage("messages.system.enable");
+        enableDisableMessage("messages.system.lifecycle.enable");
     }
 
     @Override
     public void onDisable() {
         // Log that the plugin has been disabled
-        enableDisableMessage("messages.system.disable");
+        enableDisableMessage("messages.system.lifecycle.disable");
     }
 
     // Helper function to log a system message from config.yml if it exists and is not empty.
@@ -36,6 +41,7 @@ public final class Letters extends JavaPlugin {
 
         // Insert current plugin version into placeholder
         message = message.replace("%version%", getDescription().getVersion());
+        // Log the message to the console
         getLogger().info(message);
     }
 }
