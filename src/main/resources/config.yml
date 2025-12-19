@@ -26,6 +26,11 @@ messages:
       - "<red>%death_message%</red>"
       - "<red>%player_name% met their end</red>"
 
+    # Random message from this list will be sent when a player earns an advancement
+    advancement:
+      - "<gray>%player_name%</gray> %advancement_color%made the advancement %advancement_name%!"
+      - "%advancement_color%%advancement_name% <white>advancement made by %player_name%!</white>"
+
   # System messages used internally by the plugin.
   # These messages are shown in the console or as command feedback,
   # and are not related to gameplay events.

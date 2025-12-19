@@ -1,10 +1,7 @@
 package com.sampreet.letters;
 
+import com.sampreet.letters.listeners.*;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
-import com.sampreet.letters.listeners.PapiExpansionListener;
-import com.sampreet.letters.listeners.PlayerDeathListener;
-import com.sampreet.letters.listeners.PlayerJoinListener;
-import com.sampreet.letters.listeners.PlayerQuitListener;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import com.sampreet.letters.commands.RootCommand;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -46,6 +43,7 @@ public final class Letters extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerQuitListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerDeathListener(this), this);
+        getServer().getPluginManager().registerEvents(new PlayerAdvancementDoneListener(this), this);
 
         // Log that the plugin has successfully loaded and is ready
         systemMessage("messages.system.lifecycle.enable");
