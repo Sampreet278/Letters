@@ -13,18 +13,18 @@ messages:
     # Random message from this list will be sent when a player joins the server.
     join:
       - "<green>%player_name% joined the server</green>"
-      - "<green>%player_name% connected</green>"
+      - "<green>%player_name% is now online</green>"
 
     # Random message from this list will be sent when a player leaves the server.
     leave:
       - "<red>%player_name% left the server</red>"
-      - "<red>%player_name% disconnected</red>"
+      - "<red>%player_name% went offline</red>"
 
     # Random message from this list will be sent when a player dies.
     death:
-      - "<red>%player_name% met their end</red>"
       - "<red>%player_name% died</red>"
-      # - "<red>%death_message%</red>"
+      - "<red>%death_message%</red>"
+      - "<red>%player_name% met their end</red>"
 
   # System messages used internally by the plugin.
   # These messages are shown in the console or as command feedback,
@@ -36,32 +36,32 @@ messages:
     lifecycle:
 
       # Message sent to the console when the plugin is enabled.
-      enable: "Letters version %version% has been enabled."
+      enable: "Enabled Letters v%version%"
 
       # Message sent to the console when the plugin is disabled.
-      disable: "Letters version %version% has been disabled."
+      disable: "Enabled Letters v%version%"
 
       # Message sent to the console when the plugin is reloaded.
-      reload: "<green>Letters version %version% has been reloaded.</green>"
+      reload: "<green>Reloaded Letters v%version%</green>"
 
       # Message sent to the console when PlaceholderAPI is detected
-      placeholder-api-detected: "<green>PlaceholderAPI detected! Placeholder support enabled.</green>"
+      placeholder-api-detected: "<green>PlaceholderAPI detected. Placeholder support enabled.</green>"
 
       # Message sent to the console when PlaceholderAPI isn't detected
-      placeholder-api-notfound: "<yellow>PlaceholderAPI not found! Only a few placeholders like %player_name% will work. Other placeholders require installing PlaceholderAPI: https://www.spigotmc.org/resources/placeholderapi.6245/</yellow>"
+      placeholder-api-notfound: "<yellow>PlaceholderAPI not found. Only basic placeholders like %player_name% will work.</yellow>"
 
       # Message sent to the console when PlaceholderAPI's Player expansion pack isn't detected
-      papi-player-expansion-notfound: "<yellow>PlaceholderAPI's 'player' expansion not found! Only a few placeholders like %player_name% will work. Other placeholders require installing the 'player' expansion pack: /papi ecloud download player</yellow>"
+      papi-player-expansion-notfound: "<yellow>PlaceholderAPI player expansion not found. Install it using /papi ecloud download player to enable full support.</yellow>"
 
     # Command-related system messages.
     # These messages are sent to players when they interact with the plugin's commands.
     commands:
 
       # Message sent when no subcommand is used
-      no-command: "<red>You must specify the name of the subcommand.</red>"
+      no-command: "<red>You must specify a subcommand.</red>"
 
       # Message sent when an invalid or unknown subcommand is used.
-      invalid-command: "<red>Command not found.</red>"
+      invalid-command: "<red>Unknown command.</red>"
 
       # Message sent when a player does not have permission to execute a command.
-      no-permission: "<red>You do not have permission to do that!</red>"
+      no-permission: "<red>You do not have permission to do that.</red>"
