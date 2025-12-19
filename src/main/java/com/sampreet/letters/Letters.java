@@ -1,5 +1,6 @@
 package com.sampreet.letters;
 
+import com.sampreet.letters.listeners.PapiExpansionListener;
 import com.sampreet.letters.listeners.PlayerDeathListener;
 import com.sampreet.letters.listeners.PlayerJoinListener;
 import com.sampreet.letters.listeners.PlayerQuitListener;
@@ -20,6 +21,10 @@ public final class Letters extends JavaPlugin {
         if (!getConfig().getBoolean("enabled", true)) {
             getServer().getPluginManager().disablePlugin(this);
             return;
+        }
+        // Only register PlaceholderAPI expansion pack loading listener if PlaceholderAPI is present
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            getServer().getPluginManager().registerEvents(new PapiExpansionListener(this), this);
         }
 
         // Log whether PlaceholderAPI was found or not
@@ -60,6 +65,6 @@ public final class Letters extends JavaPlugin {
         // Insert current plugin version into placeholder
         message = message.replace("%version%", getDescription().getVersion());
         // Log the message to the console
-        getLogger().info(ChatColor.translateAlternateColorCodes('&', message));
+        Bukkit.getConsoleSender().sendMessage(String.format("[%s] ", getDescription().getPrefix()) + ChatColor.translateAlternateColorCodes('&', message));
     }
 }
