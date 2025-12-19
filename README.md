@@ -1,7 +1,5 @@
 ## Introduction
-This project is a [Minecraft](https://www.minecraft.net) plugin made for the [Version 1.21.11](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11) using the [Spigot API](https://www.spigotmc.org/).
-
-[Letters](https://github.com/Sampreet278/Letters) is a lightweight Minecraft server plugin that lets you fully customize system messages like join, leave, death, and advancement messages with placeholders, colors, and complete control.
+[Letters](https://github.com/Sampreet278/Letters) is a lightweight Minecraft server plugin that lets you fully customize system messages like join, leave, death, and advancement messages with placeholders, colors, and complete control. Made using the [Spigot API](https://www.spigotmc.org/) for [Minecraft](https://www.minecraft.net) [version 1.21.11](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11).
 
 ### Download
 You can download the latest compiled JAR and source code from the [Releases page](https://github.com/Sampreet278/Letters/releases).
@@ -9,7 +7,7 @@ You can download the latest compiled JAR and source code from the [Releases page
 ### Building
 If you would like to build the project yourself, you can do so using [Apache Maven](https://maven.apache.org/).
 
-For building, open your terminal / command prompt and navigate to the project directory (either extracted, or cloned) and then use the following command to generate the plugin in the `target` directory.
+For building, open your terminal / command prompt and go to the project directory (either extracted, or cloned) and then use the following command to compile the plugin in the `target` directory.
 
 ```maven clean package```
 
