@@ -1,5 +1,5 @@
 ## Introduction
-[Letters](https://github.com/Sampreet278/Letters) is a lightweight Minecraft server plugin that lets you fully customize system messages like join, leave, death, and advancement messages with placeholders, colors, and complete control. Made using the [Spigot API](https://www.spigotmc.org/) for [Minecraft](https://www.minecraft.net) [version 1.21.11](https://www.minecraft.net/en-us/article/minecraft-java-edition-1-21-11).
+[Letters](https://github.com/Sampreet278/Letters) is a lightweight Minecraft server plugin that lets you fully customize system messages like join, leave, death, and advancement messages with placeholders, colors, and complete control. Made using the [Spigot API](https://www.spigotmc.org/).
 
 ---
 
@@ -15,7 +15,7 @@ The plugin currently supports configurable custom messages for the following eve
 - [x] Player join
 - [x] Player leave
 - [x] Player death
-- [ ] Player advancement
+- [x] Player advancement
 - [ ] Player chat messages
 - [ ] Player private messages (whispers)
 - [ ] Player sleep
@@ -41,6 +41,14 @@ The plugin provides a few built-in placeholders listed below. It also supports P
             <td>%death_message%</td>
             <td>The vanilla Minecraft death message (e.g. “Player drowned.”)</td>
         </tr>
+        <tr>
+            <td>%advancement_name%</td>
+            <td>The vanilla Minecraft advancement message name (e.g. “Isn't It Iron Pick?”)</td>
+        </tr>
+        <tr>
+            <td>%advancement_color%</td>
+            <td>The vanilla Minecraft advancement message color (e.g. <code>§a</code>)</td>
+        </tr>
     </tbody>
 </table>
 
@@ -61,6 +69,9 @@ messages:
     death:
       - "Random death message"
       - "Another random death message"
+    advancement:
+      - "Random announcement message"
+      - "Another random announcement message"
 ```
 
 ---
