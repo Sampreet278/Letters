@@ -1,5 +1,7 @@
 package com.sampreet.letters.listeners;
 
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import java.util.concurrent.ThreadLocalRandom;
 import me.clip.placeholderapi.PlaceholderAPI;
@@ -17,6 +19,8 @@ public class PlayerDeathListener implements Listener {
     public PlayerDeathListener(Letters plugin) {
         this.plugin = plugin;
     }
+
+    private final MiniMessage miniMessage = MiniMessage.miniMessage();
 
     @EventHandler
     public void onPlayerDeath(@NonNull PlayerDeathEvent event) {
@@ -50,6 +54,9 @@ public class PlayerDeathListener implements Listener {
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             message = PlaceholderAPI.setPlaceholders(event.getEntity(), message);
         }
+
+        // Deserialize MiniMessage string to a Component
+        message = LegacyComponentSerializer.legacyAmpersand().serialize(miniMessage.deserialize(message));
 
         // Block the default death message
         event.setDeathMessage(null);

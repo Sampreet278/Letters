@@ -1,5 +1,5 @@
 name: Letters
-version: '0.3.0'
+version: '0.4.0'
 main: com.sampreet.letters.Letters
 api-version: '1.21'
 prefix: Letters

@@ -1,9 +1,11 @@
 package com.sampreet.letters;
 
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import com.sampreet.letters.listeners.PapiExpansionListener;
 import com.sampreet.letters.listeners.PlayerDeathListener;
 import com.sampreet.letters.listeners.PlayerJoinListener;
 import com.sampreet.letters.listeners.PlayerQuitListener;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import com.sampreet.letters.commands.RootCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.ChatColor;
@@ -11,6 +13,8 @@ import java.util.Objects;
 import org.bukkit.Bukkit;
 
 public final class Letters extends JavaPlugin {
+
+    private final MiniMessage miniMessage = MiniMessage.miniMessage();
 
     @Override
     public void onEnable() {
@@ -64,6 +68,10 @@ public final class Letters extends JavaPlugin {
 
         // Insert current plugin version into placeholder
         message = message.replace("%version%", getDescription().getVersion());
+
+        // Deserialize MiniMessage string to a Component
+        message = LegacyComponentSerializer.legacyAmpersand().serialize(miniMessage.deserialize(message));
+
         // Log the message to the console
         Bukkit.getConsoleSender().sendMessage(String.format("[%s] ", getDescription().getPrefix()) + ChatColor.translateAlternateColorCodes('&', message));
     }

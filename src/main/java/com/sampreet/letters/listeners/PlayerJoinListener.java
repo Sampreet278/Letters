@@ -1,5 +1,7 @@
 package com.sampreet.letters.listeners;
 
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.event.player.PlayerJoinEvent;
 import java.util.concurrent.ThreadLocalRandom;
 import me.clip.placeholderapi.PlaceholderAPI;
@@ -17,6 +19,8 @@ public class PlayerJoinListener implements Listener {
     public PlayerJoinListener(Letters plugin) {
         this.plugin = plugin;
     }
+
+    private final MiniMessage miniMessage = MiniMessage.miniMessage();
 
     @EventHandler
     public void onPlayerJoin(@NonNull PlayerJoinEvent event) {
@@ -48,6 +52,9 @@ public class PlayerJoinListener implements Listener {
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
             message = PlaceholderAPI.setPlaceholders(event.getPlayer(), message);
         }
+
+        // Deserialize MiniMessage string to a Component
+        message = LegacyComponentSerializer.legacyAmpersand().serialize(miniMessage.deserialize(message));
 
         // Block the default join message
         event.setJoinMessage(null);

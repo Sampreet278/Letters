@@ -1,5 +1,7 @@
 package com.sampreet.letters.commands;
 
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.jspecify.annotations.NonNull;
@@ -16,6 +18,8 @@ public class RootCommand implements CommandExecutor, TabCompleter {
     public RootCommand(Letters plugin) {
         this.plugin = plugin;
     }
+
+    private final MiniMessage miniMessage = MiniMessage.miniMessage();
 
     @Override
     public boolean onCommand(@NonNull CommandSender sender, @NonNull Command command, @NonNull String label, String @NonNull [] args) {
@@ -71,6 +75,10 @@ public class RootCommand implements CommandExecutor, TabCompleter {
 
         // Insert current plugin version into placeholder
         message = message.replace("%version%", plugin.getDescription().getVersion());
+
+        // Deserialize MiniMessage string to a Component
+        message = LegacyComponentSerializer.legacyAmpersand().serialize(miniMessage.deserialize(message));
+
         // Send the message to the player or console
         sender.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
     }

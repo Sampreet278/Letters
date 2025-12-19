@@ -1,7 +1,9 @@
 package com.sampreet.letters.listeners;
 
-import me.clip.placeholderapi.events.ExpansionsLoadedEvent;
+import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
+import me.clip.placeholderapi.events.ExpansionsLoadedEvent;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.event.EventHandler;
 import com.sampreet.letters.Letters;
 import org.bukkit.event.Listener;
@@ -14,6 +16,8 @@ public class PapiExpansionListener implements Listener {
     public PapiExpansionListener(Letters plugin) {
         this.plugin = plugin;
     }
+
+    private final MiniMessage miniMessage = MiniMessage.miniMessage();
 
     @EventHandler
     public void onExpansionsLoaded(ExpansionsLoadedEvent event) {
@@ -36,6 +40,9 @@ public class PapiExpansionListener implements Listener {
             if (message == null || message.trim().isEmpty()) {
                 return;
             }
+
+            // Deserialize MiniMessage string to a Component
+            message = LegacyComponentSerializer.legacyAmpersand().serialize(miniMessage.deserialize(message));
 
             // Log the message to the console
             Bukkit.getConsoleSender().sendMessage(String.format("[%s] ", plugin.getDescription().getPrefix()) + ChatColor.translateAlternateColorCodes('&', message));
