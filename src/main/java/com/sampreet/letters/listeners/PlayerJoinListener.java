@@ -1,12 +1,14 @@
 package com.sampreet.letters.listeners;
 
-import org.bukkit.ChatColor;
 import org.bukkit.event.player.PlayerJoinEvent;
 import java.util.concurrent.ThreadLocalRandom;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.jspecify.annotations.NonNull;
 import org.bukkit.event.EventHandler;
 import com.sampreet.letters.Letters;
 import org.bukkit.event.Listener;
+import org.bukkit.ChatColor;
+import org.bukkit.Bukkit;
 import java.util.List;
 
 public class PlayerJoinListener implements Listener {
@@ -40,7 +42,12 @@ public class PlayerJoinListener implements Listener {
         );
 
         // Insert player name into placeholder
-        message = message.replace("%player%", event.getPlayer().getName());
+        message = message.replace("%player_name%", event.getPlayer().getName());
+
+        // Apply PlaceholderAPI placeholders if installed
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            message = PlaceholderAPI.setPlaceholders(event.getPlayer(), message);
+        }
 
         // Block the default join message
         event.setJoinMessage(null);

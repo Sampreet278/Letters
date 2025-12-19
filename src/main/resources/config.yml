@@ -12,18 +12,18 @@ messages:
 
     # Random message from this list will be sent when a player joins the server.
     join:
-      - "&a%player% joined the server"
-      - "&a%player% connected"
+      - "&a%player_name% joined the server"
+      - "&a%player_name% connected"
 
     # Random message from this list will be sent when a player leaves the server.
     leave:
-      - "&c%player% left the server"
-      - "&c%player% disconnected"
+      - "&c%player_name% left the server"
+      - "&c%player_name% disconnected"
 
     # Random message from this list will be sent when a player dies.
     death:
-      - "&c%player% met their end"
-      - "&c%player% died"
+      - "&c%player_name% met their end"
+      - "&c%player_name% died"
       # - "&c%death_message%"
 
   # System messages used internally by the plugin.
@@ -44,12 +44,18 @@ messages:
       # Message sent to the console when the plugin is reloaded.
       reload: "&aLetters version %version% has been reloaded."
 
+      # Message sent to the console when PlaceholderAPI is detected
+      placeholder-api-detected: "&aPlaceholderAPI was detected, enabling support!"
+
+      # Message sent to the console when PlaceholderAPI isn't detected
+      placeholder-api-notfound: "&ePlaceholderAPI was not detected, disabling support."
+
     # Command-related system messages.
     # These messages are sent to players when they interact with the plugin's commands.
     commands:
 
       # Message sent when an invalid or unknown subcommand is used.
-      invalid-command: "&eThe command you ran was not found."
+      invalid-command: "&cYou must specify the name of the subcommand."
 
       # Message sent when a player does not have permission to execute a command.
-      no-permission: "&cYou do not have the permission to do that!"
+      no-permission: "&cYou do not have permission to do that!"

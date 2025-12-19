@@ -7,6 +7,7 @@ import com.sampreet.letters.commands.RootCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.ChatColor;
 import java.util.Objects;
+import org.bukkit.Bukkit;
 
 public final class Letters extends JavaPlugin {
 
@@ -21,6 +22,11 @@ public final class Letters extends JavaPlugin {
             return;
         }
 
+        // Log whether PlaceholderAPI was found or not
+        systemMessage(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null
+                ? "messages.system.lifecycle.placeholder-api-detected"
+                : "messages.system.lifecycle.placeholder-api-notfound");
+
         // Register the root command executor
         RootCommand rootCommand = new RootCommand(this);
         Objects.requireNonNull(this.getCommand("letters")).setExecutor(rootCommand);
@@ -33,17 +39,17 @@ public final class Letters extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerDeathListener(this), this);
 
         // Log that the plugin has successfully loaded and is ready
-        enableDisableMessage("messages.system.lifecycle.enable");
+        systemMessage("messages.system.lifecycle.enable");
     }
 
     @Override
     public void onDisable() {
         // Log that the plugin has been disabled
-        enableDisableMessage("messages.system.lifecycle.disable");
+        systemMessage("messages.system.lifecycle.disable");
     }
 
     // Helper function to log a system message from config.yml if it exists and is not empty.
-    private void enableDisableMessage(String path) {
+    private void systemMessage(String path) {
         String message = getConfig().getString(path);
 
         // Don't log if no message is set in config.yml

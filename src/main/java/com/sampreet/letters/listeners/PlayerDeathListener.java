@@ -2,11 +2,13 @@ package com.sampreet.letters.listeners;
 
 import org.bukkit.event.entity.PlayerDeathEvent;
 import java.util.concurrent.ThreadLocalRandom;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.jspecify.annotations.NonNull;
 import org.bukkit.event.EventHandler;
 import com.sampreet.letters.Letters;
 import org.bukkit.event.Listener;
 import org.bukkit.ChatColor;
+import org.bukkit.Bukkit;
 import java.util.List;
 
 public class PlayerDeathListener implements Listener {
@@ -40,9 +42,14 @@ public class PlayerDeathListener implements Listener {
         );
 
         // Insert player name into placeholder
-        message = message.replace("%player%", event.getEntity().getName());
+        message = message.replace("%player_name%", event.getEntity().getName());
         // Insert death message into placeholder
         if (event.getDeathMessage() != null) message = message.replace("%death_message%", event.getDeathMessage());
+
+        // Apply PlaceholderAPI placeholders if installed
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+            message = PlaceholderAPI.setPlaceholders(event.getEntity(), message);
+        }
 
         // Block the default death message
         event.setDeathMessage(null);
