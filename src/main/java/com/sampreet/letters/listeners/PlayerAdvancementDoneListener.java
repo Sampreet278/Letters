@@ -5,11 +5,12 @@ import org.bukkit.event.player.PlayerAdvancementDoneEvent;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import java.util.concurrent.ThreadLocalRandom;
 import me.clip.placeholderapi.PlaceholderAPI;
-import org.jspecify.annotations.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.bukkit.event.EventHandler;
 import com.sampreet.letters.Letters;
 import org.bukkit.event.Listener;
 import org.bukkit.ChatColor;
+import org.bukkit.GameRule;
 import org.bukkit.Bukkit;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class PlayerAdvancementDoneListener implements Listener {
     private final MiniMessage miniMessage = MiniMessage.miniMessage();
 
     @EventHandler
-    public void onPlayerAdvancementDone(@NonNull PlayerAdvancementDoneEvent event) {
+    public void onPlayerAdvancementDone(@NotNull PlayerAdvancementDoneEvent event) {
         // Check if the player has the permission to have custom advancement messages
         if (!event.getPlayer().hasPermission("letters.advancement")) return;
 
@@ -47,6 +48,11 @@ public class PlayerAdvancementDoneListener implements Listener {
 
         // Return if the advancement has no display
         if (event.getAdvancement().getDisplay() == null) return;
+
+        // Disable gameRule to show vanilla
+        if (Boolean.TRUE.equals(event.getPlayer().getWorld().getGameRuleValue(GameRule.ANNOUNCE_ADVANCEMENTS))) {
+            event.getPlayer().getWorld().setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false);
+        }
 
         // Get advancement color
         ChatColor color = event.getAdvancement().getDisplay().getType().getColor();

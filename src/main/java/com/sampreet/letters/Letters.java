@@ -1,10 +1,10 @@
 package com.sampreet.letters;
 
-import com.sampreet.letters.listeners.*;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import com.sampreet.letters.commands.RootCommand;
 import org.bukkit.plugin.java.JavaPlugin;
+import com.sampreet.letters.listeners.*;
 import org.bukkit.ChatColor;
 import java.util.Objects;
 import org.bukkit.Bukkit;

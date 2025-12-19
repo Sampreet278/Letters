@@ -28,7 +28,7 @@ messages:
 
     # Random message from this list will be sent when a player earns an advancement
     advancement:
-      - "<gray>%player_name%</gray> %advancement_color%made the advancement %advancement_name%!"
+      - "<white>%player_name%</white> made the advancement %advancement_color%%advancement_name%!"
       - "%advancement_color%%advancement_name% <white>advancement made by %player_name%!</white>"
 
   # System messages used internally by the plugin.

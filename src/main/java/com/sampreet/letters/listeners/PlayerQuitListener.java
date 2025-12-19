@@ -5,7 +5,7 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.event.player.PlayerQuitEvent;
 import java.util.concurrent.ThreadLocalRandom;
 import me.clip.placeholderapi.PlaceholderAPI;
-import org.jspecify.annotations.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.bukkit.event.EventHandler;
 import com.sampreet.letters.Letters;
 import org.bukkit.event.Listener;
@@ -23,7 +23,7 @@ public class PlayerQuitListener implements Listener {
     private final MiniMessage miniMessage = MiniMessage.miniMessage();
 
     @EventHandler
-    public void onPlayerQuit(@NonNull PlayerQuitEvent event) {
+    public void onPlayerQuit(@NotNull PlayerQuitEvent event) {
         // Check if the player has the permission to have custom leave messages
         if (!event.getPlayer().hasPermission("letters.leave")) return;
 

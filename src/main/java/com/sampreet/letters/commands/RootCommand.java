@@ -3,8 +3,8 @@ package com.sampreet.letters.commands;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.command.CommandExecutor;
+import org.jetbrains.annotations.NotNull;
 import org.bukkit.command.CommandSender;
-import org.jspecify.annotations.NonNull;
 import org.bukkit.command.TabCompleter;
 import com.sampreet.letters.Letters;
 import org.bukkit.command.Command;
@@ -22,7 +22,7 @@ public class RootCommand implements CommandExecutor, TabCompleter {
     private final MiniMessage miniMessage = MiniMessage.miniMessage();
 
     @Override
-    public boolean onCommand(@NonNull CommandSender sender, @NonNull Command command, @NonNull String label, String @NonNull [] args) {
+    public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String [] args) {
         // Check if no subcommand was written.
         if (args.length == 0) {
             systemMessage(sender, "messages.system.commands.no-command");
@@ -48,7 +48,7 @@ public class RootCommand implements CommandExecutor, TabCompleter {
     }
 
     @Override
-    public List<String> onTabComplete(@NonNull CommandSender sender, @NonNull Command command, @NonNull String alias, String @NonNull [] args) {
+    public List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, String [] args) {
         // Create a list to store possible completions
         List<String> completions = new ArrayList<>();
 

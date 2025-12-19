@@ -5,7 +5,7 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.event.entity.PlayerDeathEvent;
 import java.util.concurrent.ThreadLocalRandom;
 import me.clip.placeholderapi.PlaceholderAPI;
-import org.jspecify.annotations.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.bukkit.event.EventHandler;
 import com.sampreet.letters.Letters;
 import org.bukkit.event.Listener;
@@ -23,7 +23,7 @@ public class PlayerDeathListener implements Listener {
     private final MiniMessage miniMessage = MiniMessage.miniMessage();
 
     @EventHandler
-    public void onPlayerDeath(@NonNull PlayerDeathEvent event) {
+    public void onPlayerDeath(@NotNull PlayerDeathEvent event) {
         // Check if the player has the permission to have custom death messages
         if (!event.getEntity().hasPermission("letters.death")) return;
 

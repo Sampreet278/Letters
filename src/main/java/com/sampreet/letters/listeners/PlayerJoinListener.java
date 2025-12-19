@@ -5,7 +5,7 @@ import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.event.player.PlayerJoinEvent;
 import java.util.concurrent.ThreadLocalRandom;
 import me.clip.placeholderapi.PlaceholderAPI;
-import org.jspecify.annotations.NonNull;
+import org.jetbrains.annotations.NotNull;
 import org.bukkit.event.EventHandler;
 import com.sampreet.letters.Letters;
 import org.bukkit.event.Listener;
@@ -23,7 +23,7 @@ public class PlayerJoinListener implements Listener {
     private final MiniMessage miniMessage = MiniMessage.miniMessage();
 
     @EventHandler
-    public void onPlayerJoin(@NonNull PlayerJoinEvent event) {
+    public void onPlayerJoin(@NotNull PlayerJoinEvent event) {
         // Check if the player has the permission to have custom join messages
         if (!event.getPlayer().hasPermission("letters.join")) return;
 
