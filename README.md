@@ -1,10 +1,10 @@
 ## Introduction
-[Letters](https://github.com/Sampreet278/Letters) is a lightweight Minecraft server plugin that lets you fully customize system messages like join, leave, death, and advancement messages with placeholders, colors, and complete control. Made using the [Spigot API](https://www.spigotmc.org/).
+[Letters](https://github.com/Sampreet278/Letters) is a lightweight Minecraft server plugin made using the [Spigot API](https://www.spigotmc.org/) that lets you fully customize system messages such as join, leave, death, and advancement messages with placeholder support, color formatting, and complete control.
 
 ---
 
 ### Download
-You can download the latest compiled JAR and source code from the [Releases page](https://github.com/Sampreet278/Letters/releases). If you would like to build the project yourself then read the [building](#building) section.
+You can download the latest compiled JAR and source code from the [Releases page](https://github.com/Sampreet278/Letters/releases). If you would like to build the project yourself, then read the [building](#building) section.
 
 ---
 
@@ -23,7 +23,7 @@ The plugin currently supports configurable custom messages for the following eve
 ---
 
 ### Placeholders and PAPI Support
-The plugin provides a few built-in placeholders listed below. It also supports PlaceholderAPI, allowing you to install expansion packs and use additional placeholders in your custom messages.
+The plugin provides a few built-in placeholders listed below. It also supports PlaceholderAPI (PAPI), allowing you to install expansion packs and use additional placeholders in your custom messages.
 
 <table>
     <thead>
@@ -39,7 +39,7 @@ The plugin provides a few built-in placeholders listed below. It also supports P
         </tr>
         <tr>
             <td>%death_message%</td>
-            <td>The vanilla Minecraft death message (e.g. “Player drowned.”)</td>
+            <td>The vanilla Minecraft death message (e.g. “Player drowned”)</td>
         </tr>
         <tr>
             <td>%advancement_name%</td>
@@ -77,7 +77,7 @@ messages:
 ---
 
 ### Formatting
-You can style messages using various methods color codes, MiniMessage tags, hex colors, or gradients.
+You can style messages using various methods such as color codes, MiniMessage tags, hex colors, or gradients.
 
 <table>
     <thead>
@@ -113,7 +113,9 @@ If you would like to build the project yourself, you can do so using [Apache Mav
 
 For building, open your terminal and go to the project directory (either extracted, or cloned) and then use the following command to compile the plugin in the `target` directory.
 
-```maven clean package```
+```bash
+maven clean package
+```
 
 ---
 
@@ -125,6 +127,6 @@ You can install JDK 21 from [Adoptium](https://adoptium.net/temurin/releases).
 ---
 
 ### Licensing
-This project is licensed under the [MIT License ](https://github.com/Sampreet278/Letters/blob/main/LICENSE).
+This project is licensed under the [MIT License](https://github.com/Sampreet278/Letters/blob/main/LICENSE).
 
 You are free to use, modify, distribute, and sell this software as long as the original copyright and license notice are included. For more details, see the full LICENSE file.
