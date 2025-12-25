@@ -79,7 +79,10 @@ public class RootCommand implements CommandExecutor, TabCompleter {
         // Deserialize MiniMessage string to a Component
         message = LegacyComponentSerializer.legacyAmpersand().serialize(miniMessage.deserialize(message));
 
+        // Translate color codes
+        message = ChatColor.translateAlternateColorCodes('&', message);
+
         // Send the message to the player or console
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
+        sender.sendMessage(message);
     }
 }

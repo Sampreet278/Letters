@@ -1,5 +1,6 @@
 package com.sampreet.letters;
 
+import com.sampreet.letters.commands.WhisperCommand;
 import com.sampreet.letters.commands.RootCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 import com.sampreet.letters.listeners.*;
@@ -47,6 +48,12 @@ public final class Letters extends JavaPlugin {
         Objects.requireNonNull(this.getCommand("letters")).setExecutor(rootCommand);
         // Register the root command tab completer
         Objects.requireNonNull(this.getCommand("letters")).setTabCompleter(rootCommand);
+
+        // Register the whisper command executor
+        WhisperCommand whisperCommand = new WhisperCommand(this);
+        Objects.requireNonNull(this.getCommand("msg")).setExecutor(whisperCommand);
+        // Register the whisper command tab completer
+        Objects.requireNonNull(this.getCommand("msg")).setTabCompleter(whisperCommand);
 
         // Register the event listeners
         getServer().getPluginManager().registerEvents(new PlayerAdvancementDoneListener(this), this);

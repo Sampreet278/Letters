@@ -13,6 +13,12 @@ commands:
     description: The main command for managing the plugin
     usage: /<command> <subcommand>
 
+  # Command that overrides the vanilla /msg, /tell, and /w whisper commands.
+  msg:
+    description: Command that overrides the vanilla /msg, /tell, and /w whisper commands.
+    usage: /<command> <player> <message>
+    aliases: ["tell", "w"]
+
 permissions:
   # Permission to reload the plugin configuration
   letters.reload:
@@ -42,4 +48,9 @@ permissions:
   # Default permission for having custom server chat messages
   letters.chat:
     description: Allows the plugin to change server chat messages for the player
+    default: true
+
+  # Default permission for having custom private player-to-player messages (whispers) chat messages
+  letters.whisper:
+    description: Allows the plugin to change private player-to-player messages (whispers) for the player
     default: true

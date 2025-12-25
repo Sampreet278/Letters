@@ -32,10 +32,20 @@ messages:
       - "%advancement_color%%advancement_name% <white>advancement made by %player_name%!</white>"
 
     # Random message from this list will be used when a player sends a message in the chat.
-    # You may add more formats here and the plugin will randomly select one,
-    # however this is not recommended as it may feel weird and inconsistent to players.
+    # You may add more formats here, however it is not recommended as it may feel weird and inconsistent to players.
     chat:
       - "<white>%player_name%</white> <gray>>></gray> <white>%chat_message%</white>"
+
+    # These messages are used for private player-to-player messages (whispers), such as /msg, /tell, or /w.
+    # You may add more formats here, however it is not recommended as it may feel weird and inconsistent to players.
+    whisper:
+      # Random message from this list will be shown to the sender of the whisper message
+      sender:
+        - "Whisper to %recipient_name% <gray>>></gray> %whisper_message%"
+
+      # Random message from this list will be sent to the recipient of the whisper message
+      recipient:
+        - "Whisper from %sender_name% <gray>>></gray> %whisper_message%"
 
   # System messages used internally by the plugin.
   # These messages are shown in the console or as command feedback,
@@ -75,3 +85,12 @@ messages:
 
       # Message sent when a player does not have permission to execute a command.
       no-permission: "<red>You do not have permission to do that.</red>"
+
+      # Message sent when no player is mentioned
+      no-player: "<red>You must specify a player.</red>"
+
+      # Message sent when an invalid or unknown player is mentioned.
+      invalid-player: "<red>Unknown player.</red>"
+
+      # Message sent when no message is written
+      no-message: "<red>You must provide a message.</red>"
