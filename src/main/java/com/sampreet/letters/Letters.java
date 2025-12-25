@@ -40,10 +40,11 @@ public final class Letters extends JavaPlugin {
         Objects.requireNonNull(this.getCommand("letters")).setTabCompleter(rootCommand);
 
         // Register the event listeners
+        getServer().getPluginManager().registerEvents(new PlayerAdvancementDoneListener(this), this);
+        getServer().getPluginManager().registerEvents(new AsyncPlayerChatListener(this), this);
+        getServer().getPluginManager().registerEvents(new PlayerDeathListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerQuitListener(this), this);
-        getServer().getPluginManager().registerEvents(new PlayerDeathListener(this), this);
-        getServer().getPluginManager().registerEvents(new PlayerAdvancementDoneListener(this), this);
 
         // Log that the plugin has successfully loaded and is ready
         systemMessage("messages.system.lifecycle.enable");

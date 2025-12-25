@@ -31,6 +31,12 @@ messages:
       - "%player_name% made the advancement %advancement_color%%advancement_name%<white>!</white>"
       - "%advancement_color%%advancement_name% <white>advancement made by %player_name%!</white>"
 
+    # Random message from this list will be used when a player sends a message in the chat.
+    # You may add more formats here and the plugin will randomly select one,
+    # however this is not recommended as it may feel weird and inconsistent to players.
+    chat:
+      - "<white>%player_name%</white> <gray>>></gray> <white>%chat_message%</white>"
+
   # System messages used internally by the plugin.
   # These messages are shown in the console or as command feedback,
   # and are not related to gameplay events.
