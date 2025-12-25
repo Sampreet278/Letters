@@ -16,7 +16,7 @@ The plugin currently supports configurable custom messages for the following eve
 - [x] Player leave
 - [x] Player death
 - [x] Player advancement
-- [ ] Player chat messages
+- [x] Player chat messages
 - [ ] Player private messages (whispers)
 - [ ] Player sleep
 
@@ -48,6 +48,10 @@ The plugin provides a few built-in placeholders listed below. It also supports P
         <tr>
             <td>%advancement_color%</td>
             <td>The vanilla Minecraft advancement message color (e.g. <code>§a</code>)</td>
+        </tr>
+        <tr>
+            <td>%chat_message%</td>
+            <td>The message written by the player when they send a chat message</td>
         </tr>
     </tbody>
 </table>
