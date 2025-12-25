@@ -38,7 +38,7 @@ public class RootCommand implements CommandExecutor, TabCompleter {
             }
             // Reload the config and send a confirmation message
             plugin.reloadConfig();
-            systemMessage(sender, "messages.system.lifecycle.reload");
+            systemMessage(sender, "messages.system.commands.reload");
             return true;
         }
 

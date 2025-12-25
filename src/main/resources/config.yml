@@ -52,9 +52,6 @@ messages:
       # Message sent to the console when the plugin is disabled.
       disable: "Enabled Letters v%version%"
 
-      # Message sent to the console when the plugin is reloaded.
-      reload: "Reloaded Letters v%version%"
-
       # Message sent to the console when PlaceholderAPI is detected
       placeholder-api-detected: "PlaceholderAPI detected. Placeholder support enabled."
 
@@ -67,6 +64,8 @@ messages:
     # Command-related system messages.
     # These messages are sent to players when they interact with the plugin's commands.
     commands:
+      # Message sent to the player or console when the plugin is reloaded.
+      reload: "<green>Reloaded Letters v%version%</green>"
 
       # Message sent when no subcommand is used
       no-command: "<red>You must specify a subcommand.</red>"
