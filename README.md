@@ -17,7 +17,7 @@ The plugin currently supports configurable custom messages for the following eve
 - [x] Player death
 - [x] Player advancement
 - [x] Player chat messages
-- [ ] Player private messages (whispers)
+- [x] Player private messages (whispers)
 - [ ] Player sleep
 
 ---
@@ -38,6 +38,22 @@ The plugin provides a few built-in placeholders listed below. It also supports P
             <td>The player’s username</td>
         </tr>
         <tr>
+            <td>%sender_name%</td>
+            <td>The player sending a whisper message</td>
+        </tr>
+        <tr>
+            <td>%recipient_name%</td>
+            <td>The player receiving a whisper message</td>
+        </tr>
+        <tr>
+            <td>%whisper_message%</td>
+            <td>The content of the whisper message</td>
+        </tr>
+        <tr>
+            <td>%chat_message%</td>
+            <td>The message written by the player when they send a chat message</td>
+        </tr>
+        <tr>
             <td>%death_message%</td>
             <td>The vanilla Minecraft death message (e.g. “Player drowned”)</td>
         </tr>
@@ -48,10 +64,6 @@ The plugin provides a few built-in placeholders listed below. It also supports P
         <tr>
             <td>%advancement_color%</td>
             <td>The vanilla Minecraft advancement message color (e.g. <code>§a</code>)</td>
-        </tr>
-        <tr>
-            <td>%chat_message%</td>
-            <td>The message written by the player when they send a chat message</td>
         </tr>
     </tbody>
 </table>
@@ -79,6 +91,13 @@ messages:
     chat:
       - "Random server chat message"
       - "Another random server chat message"
+    whisper:
+      sender:
+        - "Random whisper chat message shown to sender"
+        - "Another random whisper chat message shown to sender"
+      recipient:
+        - "Random whisper chat message shown to recipient"
+        - "Another random whisper chat message shown to recipient" 
 ```
 
 ---
