@@ -23,11 +23,6 @@ public final class Letters extends JavaPlugin {
         // Check if PlaceholderAPI is present
         boolean PAPIFound = Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null;
 
-        // Only register PlaceholderAPI expansion pack loading listener if PlaceholderAPI is present
-        if (PAPIFound) {
-            getServer().getPluginManager().registerEvents(new PapiExpansionListener(this), this);
-        }
-
         // Store config.yml message path depending on whether PlaceholderAPI is present or not
         String path = PAPIFound
                     ? "messages.system.lifecycle.placeholder-api-detected"
