@@ -1,17 +1,12 @@
 package com.sampreet.letters;
 
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
-import net.kyori.adventure.text.minimessage.MiniMessage;
 import com.sampreet.letters.commands.RootCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 import com.sampreet.letters.listeners.*;
-import org.bukkit.ChatColor;
 import java.util.Objects;
 import org.bukkit.Bukkit;
 
 public final class Letters extends JavaPlugin {
-
-    private final MiniMessage miniMessage = MiniMessage.miniMessage();
 
     @Override
     public void onEnable() {
@@ -23,15 +18,29 @@ public final class Letters extends JavaPlugin {
             getServer().getPluginManager().disablePlugin(this);
             return;
         }
+
+        // Check if PlaceholderAPI is present
+        boolean PAPIFound = Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null;
+
         // Only register PlaceholderAPI expansion pack loading listener if PlaceholderAPI is present
-        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
+        if (PAPIFound) {
             getServer().getPluginManager().registerEvents(new PapiExpansionListener(this), this);
         }
 
+        // Store config.yml message path depending on whether PlaceholderAPI is present or not
+        String path = PAPIFound
+                    ? "messages.system.lifecycle.placeholder-api-detected"
+                    : "messages.system.lifecycle.placeholder-api-notfound";
+
         // Log whether PlaceholderAPI was found or not
-        systemMessage(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null
-                ? "messages.system.lifecycle.placeholder-api-detected"
-                : "messages.system.lifecycle.placeholder-api-notfound");
+        String message = getConfig().getString(path);
+        if (message != null && !message.trim().isEmpty()) {
+            if (PAPIFound) {
+                getLogger().info(message);
+            } else {
+                getLogger().warning(message);
+            }
+        }
 
         // Register the root command executor
         RootCommand rootCommand = new RootCommand(this);
@@ -47,17 +56,17 @@ public final class Letters extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerQuitListener(this), this);
 
         // Log that the plugin has successfully loaded and is ready
-        systemMessage("messages.system.lifecycle.enable");
+        enableDisableMessage("messages.system.lifecycle.enable");
     }
 
     @Override
     public void onDisable() {
         // Log that the plugin has been disabled
-        systemMessage("messages.system.lifecycle.disable");
+        enableDisableMessage("messages.system.lifecycle.disable");
     }
 
     // Helper function to log a system message from config.yml if it exists and is not empty.
-    private void systemMessage(String path) {
+    private void enableDisableMessage(String path) {
         String message = getConfig().getString(path);
 
         // Don't log if no message is set in config.yml
@@ -68,10 +77,7 @@ public final class Letters extends JavaPlugin {
         // Insert current plugin version into placeholder
         message = message.replace("%version%", getDescription().getVersion());
 
-        // Deserialize MiniMessage string to a Component
-        message = LegacyComponentSerializer.legacyAmpersand().serialize(miniMessage.deserialize(message));
-
         // Log the message to the console
-        Bukkit.getConsoleSender().sendMessage(String.format("[%s] ", getDescription().getPrefix()) + ChatColor.translateAlternateColorCodes('&', message));
+        getLogger().info(message);
     }
 }

@@ -56,9 +56,10 @@ public class PlayerJoinListener implements Listener {
         // Deserialize MiniMessage string to a Component
         message = LegacyComponentSerializer.legacyAmpersand().serialize(miniMessage.deserialize(message));
 
-        // Block the default join message
-        event.setJoinMessage(null);
+        // Translate color codes
+        message = ChatColor.translateAlternateColorCodes('&', message);
+
         // Broadcast the custom message to the server
-        event.getPlayer().getServer().broadcastMessage(ChatColor.translateAlternateColorCodes('&', message));
+        event.setJoinMessage(message);
     }
 }

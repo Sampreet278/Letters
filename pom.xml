@@ -6,7 +6,7 @@
 
     <groupId>com.sampreet</groupId>
     <artifactId>Letters</artifactId>
-    <version>0.6.0</version>
+    <version>0.7.0</version>
     <packaging>jar</packaging>
 
     <name>Letters</name>
@@ -41,6 +41,7 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <minimizeJar>true</minimizeJar>
                     <createDependencyReducedPom>false</createDependencyReducedPom>
                     <filters>
                         <filter>

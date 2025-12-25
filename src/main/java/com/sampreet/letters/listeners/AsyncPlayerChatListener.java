@@ -47,8 +47,8 @@ public class AsyncPlayerChatListener implements Listener {
 
         // Insert player name and chat message into placeholder
         message = message
-                .replace("%player_name%", event.getPlayer().getName())
-                .replace("%chat_message%", event.getMessage());
+                .replace("%player_name%", "%1$s")
+                .replace("%chat_message%", "%2$s");
 
         // Apply PlaceholderAPI placeholders if installed
         if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null) {
@@ -58,9 +58,10 @@ public class AsyncPlayerChatListener implements Listener {
         // Deserialize MiniMessage string to a Component
         message = LegacyComponentSerializer.legacyAmpersand().serialize(miniMessage.deserialize(message));
 
-        // Block the default server chat message
-        event.setCancelled(true);
+        // Translate color codes
+        message = ChatColor.translateAlternateColorCodes('&', message);
+
         // Broadcast the custom message to the server
-        event.getPlayer().getServer().broadcastMessage(ChatColor.translateAlternateColorCodes('&', message));
+        event.setFormat(message);
     }
 }

@@ -28,7 +28,7 @@ messages:
 
     # Random message from this list will be sent when a player earns an advancement
     advancement:
-      - "%player_name% made the advancement %advancement_color%%advancement_name%<white>!</white>"
+      - "%player_name% made the advancement %advancement_color%%advancement_name%"
       - "%advancement_color%%advancement_name% <white>advancement made by %player_name%!</white>"
 
     # Random message from this list will be used when a player sends a message in the chat.
@@ -43,7 +43,7 @@ messages:
   system:
 
     # Plugin lifecycle messages.
-    # These messages are sent when the plugin is enabled, disabled, or reloaded.
+    # These messages are sent when the plugin is enabled, disabled, reloaded, or during other system events.
     lifecycle:
 
       # Message sent to the console when the plugin is enabled.
@@ -53,16 +53,16 @@ messages:
       disable: "Enabled Letters v%version%"
 
       # Message sent to the console when the plugin is reloaded.
-      reload: "<green>Reloaded Letters v%version%</green>"
+      reload: "Reloaded Letters v%version%"
 
       # Message sent to the console when PlaceholderAPI is detected
-      placeholder-api-detected: "<green>PlaceholderAPI detected. Placeholder support enabled.</green>"
+      placeholder-api-detected: "PlaceholderAPI detected. Placeholder support enabled."
 
       # Message sent to the console when PlaceholderAPI isn't detected
-      placeholder-api-notfound: "<yellow>PlaceholderAPI not found. Only basic placeholders like %player_name% will work.</yellow>"
+      placeholder-api-notfound: "PlaceholderAPI not found. Only basic placeholders like %player_name% will work."
 
       # Message sent to the console when PlaceholderAPI's Player expansion pack isn't detected
-      papi-player-expansion-notfound: "<yellow>PlaceholderAPI player expansion not found. Install it using /papi ecloud download player to enable full support.</yellow>"
+      papi-player-expansion-notfound: "PlaceholderAPI player expansion not found. Install it using /papi ecloud download player to enable full support."
 
     # Command-related system messages.
     # These messages are sent to players when they interact with the plugin's commands.

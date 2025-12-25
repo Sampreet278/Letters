@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
 import org.bukkit.event.EventHandler;
 import com.sampreet.letters.Letters;
 import org.bukkit.event.Listener;
+import java.lang.reflect.Field;
 import org.bukkit.ChatColor;
 import org.bukkit.GameRule;
 import org.bukkit.Bukkit;
@@ -49,9 +50,10 @@ public class PlayerAdvancementDoneListener implements Listener {
         // Return if the advancement has no display
         if (event.getAdvancement().getDisplay() == null) return;
 
-        // Disable gameRule to show vanilla
-        if (Boolean.TRUE.equals(event.getPlayer().getWorld().getGameRuleValue(GameRule.ANNOUNCE_ADVANCEMENTS))) {
-            event.getPlayer().getWorld().setGameRule(GameRule.ANNOUNCE_ADVANCEMENTS, false);
+        // Disable it so the vanilla message does not show
+        GameRule<Boolean> showAdvancementMessages = getAdvancementGameRule();
+        if (showAdvancementMessages != null && Boolean.TRUE.equals(event.getPlayer().getWorld().getGameRuleValue(showAdvancementMessages))) {
+            event.getPlayer().getWorld().setGameRule(showAdvancementMessages, false);
         }
 
         // Get advancement color
@@ -76,5 +78,21 @@ public class PlayerAdvancementDoneListener implements Listener {
 
         // Broadcast the custom message to the server
         event.getPlayer().getServer().broadcastMessage(ChatColor.translateAlternateColorCodes('&', message));
+    }
+
+    @SuppressWarnings("unchecked")
+    private GameRule<Boolean> getAdvancementGameRule() {
+        try {
+            Field oldRule = GameRule.class.getField("ANNOUNCE_ADVANCEMENTS");
+            return (GameRule<Boolean>) oldRule.get(null);
+        } catch (NoSuchFieldException | IllegalAccessException e1) {
+            try {
+                //noinspection JavaReflectionMemberAccess
+                Field newRule = GameRule.class.getField("SHOW_ADVANCEMENT_MESSAGES");
+                return (GameRule<Boolean>) newRule.get(null);
+            } catch (NoSuchFieldException | IllegalAccessException e2) {
+                return null;
+            }
+        }
     }
 }
