@@ -76,6 +76,9 @@ messages:
     advancement:
       - "Random announcement message"
       - "Another random announcement message"
+    chat:
+      - "Random server chat message"
+      - "Another random server chat message"
 ```
 
 ---
