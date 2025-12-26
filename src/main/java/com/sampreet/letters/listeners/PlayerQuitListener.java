@@ -27,8 +27,17 @@ public class PlayerQuitListener implements Listener {
         // Check if the player has the permission to have custom leave messages
         if (!event.getPlayer().hasPermission("letters.leave")) return;
 
-        // Store all custom leave messages in a list
-        List<String> messages = plugin.getConfig().getStringList("messages.default.leave");
+        // Get player name to check for player-specific leave message in config.yml
+        String playerName = event.getPlayer().getName();
+
+        // Try getting the player-specific leave message from config.yml
+        String playerPath = "messages.players." + playerName + ".leave";
+        List<String> messages = plugin.getConfig().getStringList(playerPath);
+
+        // If none found, fall back to default leave messages
+        if (messages.isEmpty()) {
+            messages = plugin.getConfig().getStringList("messages.default.leave");
+        }
 
         // Filter out all null or empty strings like ones which are just whitespaces
         List<String> validMessages = messages.stream()

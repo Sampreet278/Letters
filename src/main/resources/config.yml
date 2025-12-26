@@ -6,8 +6,8 @@ enabled: true
 # such as join, leave, death, advancement, and system messages.
 messages:
 
-  # These messages are default for everyone and are sent for gameplay events
-  # such as player join and leave.
+  # These messages are default for everyone unless overridden
+  # by a permission-based or player-specific message.
   default:
 
     # Random message from this list will be sent when a player joins the server.
@@ -26,26 +26,45 @@ messages:
       - "<red>%death_message%</red>"
       - "<red>%player_name% met their end</red>"
 
-    # Random message from this list will be sent when a player earns an advancement
+    # Random message from this list will be sent when a player earns an advancement.
     advancement:
       - "%player_name% made the advancement %advancement_color%%advancement_name%"
       - "%advancement_color%%advancement_name% <white>advancement made by %player_name%!</white>"
 
-    # Random message from this list will be used when a player sends a message in the chat.
-    # You may add more formats here, however it is not recommended as it may feel weird and inconsistent to players.
+    # Random message from this list will be used when a player sends a message in chat.
+    # Adding too many formats here is not recommended, as it may feel inconsistent.
     chat:
       - "<white>%player_name%</white> <gray>>></gray> <white>%chat_message%</white>"
 
-    # These messages are used for private player-to-player messages (whispers), such as /msg, /tell, or /w.
-    # You may add more formats here, however it is not recommended as it may feel weird and inconsistent to players.
+    # These messages are used for private player-to-player messages (whispers),
+    # such as /msg, /tell, or /w.
     whisper:
-      # Random message from this list will be shown to the sender of the whisper message
+
+      # Random message shown to the sender of the whisper.
       sender:
         - "Whisper to %recipient_name% <gray>>></gray> %whisper_message%"
 
-      # Random message from this list will be sent to the recipient of the whisper message
+      # Random message sent to the recipient of the whisper.
       recipient:
         - "Whisper from %sender_name% <gray>>></gray> %whisper_message%"
+
+  # These messages apply only to specific players.
+  # They have the highest priority and will override
+  # both permission-based and default messages.
+  players:
+
+    # These messages override all others for this specific player.
+    # Only this player will have these custom messages.
+    example_player:
+
+      # You can define overrides here for any message type,
+      # such as leave, death, advancement, chat, or whispers,
+      # using the same format as the default section.
+
+      # A random message from this list will be sent when this player joins the server.
+      join:
+        - "<light_purple>Example player has joined the server</light_purple>"
+        - "<light_purple>Example player is now online</light_purple>"
 
   # System messages used internally by the plugin.
   # These messages are shown in the console or as command feedback,
@@ -53,7 +72,6 @@ messages:
   system:
 
     # Plugin lifecycle messages.
-    # These messages are sent when the plugin is enabled, disabled, reloaded, or during other system events.
     lifecycle:
 
       # Message sent to the console when the plugin is enabled.
@@ -62,32 +80,32 @@ messages:
       # Message sent to the console when the plugin is disabled.
       disable: "Enabled Letters v%version%"
 
-      # Message sent to the console when PlaceholderAPI is detected
+      # Message sent when PlaceholderAPI is detected.
       placeholder-api-detected: "PlaceholderAPI detected. Placeholder support enabled."
 
-      # Message sent to the console when PlaceholderAPI isn't detected
+      # Message sent when PlaceholderAPI is not detected.
       placeholder-api-notfound: "PlaceholderAPI not found. Only basic placeholders like %player_name% will work."
 
     # Command-related system messages.
-    # These messages are sent to players when they interact with the plugin's commands.
     commands:
-      # Message sent to the player or console when the plugin is reloaded.
+
+      # Message sent when the plugin is reloaded.
       reload: "<green>Reloaded Letters v%version%</green>"
 
-      # Message sent when no subcommand is used
+      # Message sent when no subcommand is used.
       no-command: "<red>You must specify a subcommand.</red>"
 
-      # Message sent when an invalid or unknown subcommand is used.
+      # Message sent when an invalid subcommand is used.
       invalid-command: "<red>Unknown command.</red>"
 
-      # Message sent when a player does not have permission to execute a command.
+      # Message sent when the player lacks permission.
       no-permission: "<red>You do not have permission to do that.</red>"
 
-      # Message sent when no player is mentioned
+      # Message sent when no player is specified.
       no-player: "<red>You must specify a player.</red>"
 
-      # Message sent when an invalid or unknown player is mentioned.
+      # Message sent when an invalid player is specified.
       invalid-player: "<red>Unknown player.</red>"
 
-      # Message sent when no message is written
+      # Message sent when no message is provided.
       no-message: "<red>You must provide a message.</red>"

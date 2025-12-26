@@ -29,8 +29,17 @@ public class PlayerAdvancementDoneListener implements Listener {
         // Check if the player has the permission to have custom advancement messages
         if (!event.getPlayer().hasPermission("letters.advancement")) return;
 
-        // Store all custom advancement messages in a list
-        List<String> messages = plugin.getConfig().getStringList("messages.default.advancement");
+        // Get player name to check for player-specific advancement message in config.yml
+        String playerName = event.getPlayer().getName();
+
+        // Try getting the player-specific advancement message from config.yml
+        String playerPath = "messages.players." + playerName + ".advancement";
+        List<String> messages = plugin.getConfig().getStringList(playerPath);
+
+        // If none found, fall back to default advancement messages
+        if (messages.isEmpty()) {
+            messages = plugin.getConfig().getStringList("messages.default.advancement");
+        }
 
         // Filter out all null or empty strings like ones which are just whitespaces
         List<String> validMessages = messages.stream()

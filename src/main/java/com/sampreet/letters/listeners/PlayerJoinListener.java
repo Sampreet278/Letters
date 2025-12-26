@@ -27,8 +27,17 @@ public class PlayerJoinListener implements Listener {
         // Check if the player has the permission to have custom join messages
         if (!event.getPlayer().hasPermission("letters.join")) return;
 
-        // Store all custom join messages in a list
-        List<String> messages = plugin.getConfig().getStringList("messages.default.join");
+        // Get player name to check for player-specific join message in config.yml
+        String playerName = event.getPlayer().getName();
+
+        // Try getting the player-specific join message from config.yml
+        String playerPath = "messages.players." + playerName + ".join";
+        List<String> messages = plugin.getConfig().getStringList(playerPath);
+
+        // If none found, fall back to default join messages
+        if (messages.isEmpty()) {
+            messages = plugin.getConfig().getStringList("messages.default.join");
+        }
 
         // Filter out all null or empty strings like ones which are just whitespaces
         List<String> validMessages = messages.stream()

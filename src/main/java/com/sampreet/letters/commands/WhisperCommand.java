@@ -26,6 +26,12 @@ public class WhisperCommand implements CommandExecutor, TabCompleter {
 
     private final MiniMessage miniMessage = MiniMessage.miniMessage();
 
+    // Defines whether the whisper message format is for the sender or the recipient.
+    public enum Target {
+        SENDER,
+        RECIPIENT
+    }
+
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String [] args) {
         // Check if the player has the permission to have custom join messages
@@ -65,9 +71,9 @@ public class WhisperCommand implements CommandExecutor, TabCompleter {
         }
 
         // Send message to sender
-        whisperMessage(sender, sender, recipient, whisperMessage, "messages.default.whisper.sender");
+        whisperMessage(sender, sender, recipient, whisperMessage, Target.SENDER);
         // Send message to recipient
-        whisperMessage(recipient, sender, recipient, whisperMessage, "messages.default.whisper.recipient");
+        whisperMessage(recipient, sender, recipient, whisperMessage, Target.RECIPIENT);
         return true;
     }
 
@@ -112,9 +118,31 @@ public class WhisperCommand implements CommandExecutor, TabCompleter {
     }
 
     // Sends a whisper message to a specific receiver, replacing placeholders with sender, recipient, and message.
-    public void whisperMessage(CommandSender receiver, CommandSender sender, Player recipient, String whisperMessage, String path) {
+    public void whisperMessage(
+            CommandSender receiver,
+            CommandSender sender,
+            Player recipient,
+            String whisperMessage,
+            Target target
+    ) {
         // Store all custom join messages in a list
-        List<String> messages = plugin.getConfig().getStringList(path);
+        List<String> messages;
+
+        String type = (target == Target.SENDER) ? "sender" : "recipient";
+
+        // Try getting the player-specific whisper message from config.yml
+        if (receiver instanceof Player player) {
+            String playerPath = "messages.players." + player.getName() + ".whisper." + type;
+            messages = plugin.getConfig().getStringList(playerPath);
+        } else {
+            messages = List.of();
+        }
+
+        // If none found, fall back to default whisper messages
+        if (messages.isEmpty()) {
+            String defaultPath = "messages.default.whisper." + type;
+            messages = plugin.getConfig().getStringList(defaultPath);
+        }
 
         // Filter out all null or empty strings like ones which are just whitespaces
         List<String> validMessages = messages.stream()

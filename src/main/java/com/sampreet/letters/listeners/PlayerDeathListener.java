@@ -27,8 +27,17 @@ public class PlayerDeathListener implements Listener {
         // Check if the player has the permission to have custom death messages
         if (!event.getEntity().hasPermission("letters.death")) return;
 
-        // Store all custom death messages in a list
-        List<String> messages = plugin.getConfig().getStringList("messages.default.death");
+        // Get player name to check for player-specific death message in config.yml
+        String playerName = event.getEntity().getName();
+
+        // Try getting the player-specific death message from config.yml
+        String playerPath = "messages.players." + playerName + ".death";
+        List<String> messages = plugin.getConfig().getStringList(playerPath);
+
+        // If none found, fall back to default death messages
+        if (messages.isEmpty()) {
+            messages = plugin.getConfig().getStringList("messages.default.death");
+        }
 
         // Filter out all null or empty strings like ones which are just whitespaces
         List<String> validMessages = messages.stream()

@@ -27,8 +27,17 @@ public class AsyncPlayerChatListener implements Listener {
         // Check if the player has the permission to have custom server chat messages
         if (!event.getPlayer().hasPermission("letters.chat")) return;
 
-        // Store all custom join messages in a list
-        List<String> messages = plugin.getConfig().getStringList("messages.default.chat");
+        // Get player name to check for player-specific chat message in config.yml
+        String playerName = event.getPlayer().getName();
+
+        // Try getting the player-specific chat message from config.yml
+        String playerPath = "messages.players." + playerName + ".chat";
+        List<String> messages = plugin.getConfig().getStringList(playerPath);
+
+        // If none found, fall back to default chat messages
+        if (messages.isEmpty()) {
+            messages = plugin.getConfig().getStringList("messages.default.chat");
+        }
 
         // Filter out all null or empty strings like ones which are just whitespaces
         List<String> validMessages = messages.stream()
