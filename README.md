@@ -1,5 +1,7 @@
 ## Introduction
-[Letters](https://github.com/Sampreet278/Letters) is a lightweight Minecraft server plugin made using the [Spigot API](https://www.spigotmc.org/) that lets you fully customize system messages such as join, leave, death, and advancement messages with placeholder support, color formatting, and complete control.
+Customizing system messages in Minecraft shouldn’t be so hard, they’re just [Letters](https://github.com/Sampreet278/Letters) on the screen anyway.
+
+This project is a lightweight Minecraft server plugin inspired by [Lejo](https://github.com/Maksim6opka/lejo) that lets you fully customize system messages such as join, leave, death, and advancement messages with placeholder support, color formatting, and complete control.
 
 ---
 

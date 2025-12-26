@@ -1,9 +1,9 @@
 package com.sampreet.letters.commands;
 
-import me.clip.placeholderapi.PlaceholderAPI;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import java.util.concurrent.ThreadLocalRandom;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.command.CommandExecutor;
 import org.jetbrains.annotations.NotNull;
 import org.bukkit.command.CommandSender;
